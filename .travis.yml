@@ -1,5 +1,6 @@
 sudo: false
 language: nix
+script: set
 
 deploy:
   skip_cleanup: true
