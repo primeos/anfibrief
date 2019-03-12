@@ -1,11 +1,11 @@
 sudo: false
 language: nix
-script: nix-build --argstr date "$(date --date=@$(git log -1 --pretty=%ct) +%F)"
+script: nix-channel --list && nix-channel --add https://nixos.org/channels/nixos-unstable nixpkgs && nix-channel --update && nix-channel --list #&& nix-build --argstr date "$(date --date=@$(git log -1 --pretty=%ct) +%F)"
 
 deploy:
   skip_cleanup: true
   provider: script
   script: bash deploy.sh
   on:
-    branch: master
+    branch: ci-test
     repo: fsi-tue/anfibrief
